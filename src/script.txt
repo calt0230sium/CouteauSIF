@@ -32,7 +32,8 @@ Vous acquiesez et démarrez la camionette. En route pour votre destination.
 INTERRUPTIONS:
 -> couteau : (patron est un niveau plus fâché)
 Vous coupez le fil du combiné. Oh non ! Vous l'avez encore fait...
-Heureusement, vous embarquez toujours plusieurs fils de téléphone dans la camionette. Une sage précaution au vu de votre tendance à les trancher.
+Heureusement, vous embarquez toujours plusieurs fils de téléphone à l'arrière de la camionette. Une sage précaution au vu de votre tendance à les trancher.
+Vous trouvez aussi un slot d'inventaire supplémentaire ! **OBTENU** Slot d'inventaire supplémentaire !
 Après un peu de bricolage, le téléphone est comme neuf. Vous composez le numéro du bureau et votre patron décroche :
 "Ça t'est encore arrivé hm ? Bon allez. Ta première mission du jour est d'aller réparer la Box Internet de Mme Placeholder au 5 rue de la Jam, à Parici-en-Trédonc. je raccroche avant que tu coupes de nouveau."
 Vous vous mettez en route...
@@ -89,8 +90,8 @@ Elle ne se doute de rien quand à l'état de votre équipement, parfait. Si tous
 Vous décidez que le moment est bien choisi pour essayer votre nouveau briquet. Après quelques essais infructueux, vous prenez le coup de main et produisez un belle flamme.
 Mme. Placeholder semble ignorer votre petit jeu et vous fait signe de rentrer :
 "Allons donc à l'intérieur. Je vais vous montrer ma Box Internet."
--> clé : (client un niveau plus fâché, clé -1PV)
-Vous poussez légèrement Mme Placeholder de l'épaule pour essayer la clé de votre couteau suisse dans la serrure de sa maison. De façon peu surprenante, ce ne semble pas âtre la clé de la maison de Mme Placeholder. Vous forcez légèrement (au cas où), ce qui abime un peu la clé. 
+-> clé : (client un niveau plus fâché)
+Vous poussez légèrement Mme Placeholder de l'épaule pour essayer la clé de votre couteau suisse dans la serrure de sa maison. De façon peu surprenante, ce ne semble pas âtre la clé de la maison de Mme Placeholder. Vous forcez légèrement (au cas où), ce qui n'a pas d'effet. 
 "Monsieur. Que faites-vous. La porte est déjà ouverte, arrêtez monsieur."
 Vous rangez votre clé l'air tout penaud. 
 "Suivez-moi puisque vous tenez à rentrer. Venez. Je vais vous montrer ma box qui ne marche pas." 
@@ -155,14 +156,15 @@ Ouais euh. Ça n'était peut-être pas une idée si brillante. Un odeur de plast
 "Mais ?! Qu'avez-vous fait ? Ma box est en train de brûler ?? Vilain monsieur ! Pyromane ! Sortez de chez moi !"
 Vous ne vous faites pas prier pour retourner à votre camionette. Honnêtement vous n'êtes pas trop sûr de ce qui vous est passé par la tête.
 **BAD ENDING** Vous n'avez pas pu réparer la Box. Appuyez sur R pour relancer le jeu ou Q pour quitter.
--> clé : (clé -1PV)
-Vous insérez la clé dans la serrure d'un des placards du buffet sans succès. Même en forçant un peu ça ne rentre pas. Quel dommage.
+-> clé :
+Vous insérez la clé dans la serrure d'un des placards du buffet avec succès. A l'intérieur, pas de manuel de routeur mais un slot d'inventaire supplémentaire !
+En refermant le placard vous cassez malheureusement la clé.
 
-Si laser : 
+Si laser ou clé : 
 La box éteinte continue de vous narguer. Comment allez-vous la réparer ?
 (même choix)
 
-Si Box réparé
+Si Box réparée
 Vous annoncez à Mme. Placeholder que vous avez réparé sa Box avant de retourner à votre camionette.
 Plus qu'à attendre la prochaine mission. C'était facile !
 GOOD ENDING
