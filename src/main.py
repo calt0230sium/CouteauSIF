@@ -36,9 +36,8 @@ class Game:
 		]
 
 		# texts
-		self.title = TextManager("Le Couteau Sif", False)
-		self.dialogBox = TextManager("Bonjour étrangé.", True) 
-	
+		self.title = TextManager("Le Couteau Sif", 50, False)
+
 	def gameInit(self) -> None:
 		#time
 		self.time = pygame.time.Clock()
@@ -50,7 +49,7 @@ class Game:
 		match self.current_scene_id:
 			case 0: # title
 				self.title.initialize()
-				self.drawText(self.title, 800/2, 600/2)
+				self.drawText(self.title, 800/2-125, 600/2-10)
 			case _: # other scene
 				if self.currentScene is not self.bobine[self.current_scene_id-1]:
 					self.currentScene = self.bobine[self.current_scene_id-1]
@@ -64,7 +63,7 @@ class Game:
 			self.eventManager()
 			
 			# draw
-			self.window.fill(BLACK)
+			# self.window.fill(BLACK)
 			self.showScene()
 			
 			#draw next
@@ -74,7 +73,8 @@ class Game:
 			self.time.tick()
 
 	def drawText(self, text:TextManager, posX:float, posY: float) -> None:
-		self.window.blit(text.getTexture(pygame.time.get_ticks()), (posX, posY))
+		tuple_title = text.getTexture(pygame.time.get_ticks())
+		self.window.blit(tuple_title[2], (posX, posY))
 
 	def eventManager(self) -> None:
 		for event in pygame.event.get():

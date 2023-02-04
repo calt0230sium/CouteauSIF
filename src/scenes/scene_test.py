@@ -13,9 +13,11 @@ class Scene_test:
         self.sceneTools = SceneManagement(
             window,
             controls,
-            "../assets/background_placeholder.jpg" 
+            "../assets/background_placeholder.jpg",
+            [
+                "Bonjour étrangé. Comment ça va vous allez bien ? Moi non j'ai besoin d'être réparé. Je suis vraiment blessé au plus profond de mon être, apporté moi de l'aide je vous en pris. Je ne suis qu'une pauvre petite box...",
+            ]
         )
 
     def update(self):
-        # self.eventManager()
         self.sceneTools.update()

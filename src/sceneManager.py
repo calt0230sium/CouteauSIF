@@ -9,23 +9,21 @@ class SceneManagement:
         window,
         controls,
         background:str,
-        dialogs:list[str] = [
-            "Bonjour étrangé. Comment ça va vous allez bien ? Moi non j'ai besoin d'être réparé. Je suis vraiment blessé au plus profond de mon être, apporté moi de l'aide je vous en pris. Je ne suis qu'une pauvre petite box...",
-        ],
+        dialogs:list[str],
     ):
         self.dialogs = dialogs
         self.window = window
-        self.controls = controls 
+        self.controls = controls
         self.current_event = None
         
         # background + dialog
         self.pos_background = [10,10]
-        self.pos_dialogs = [10,500]
+        self.pos_dialogs = [10,420]
         self.background = pygame.transform.scale(
             pygame.image.load(background).convert(),
             (800-200,400)
         )
-        self.current_dialog = TextManager(dialogs[0], True)
+        self.current_dialog = TextManager(dialogs[0], 25, True)
         self.isEnd = False
 
         # const
@@ -47,7 +45,8 @@ class SceneManagement:
 
     def drawDialog(self):
         text = self.current_dialog
-        self.window.blit(text.getTexture(pygame.time.get_ticks()), (
-            self.pos_dialogs[0], 
-            self.pos_dialogs[1]
+        tuple_dialog = text.getTexture(pygame.time.get_ticks())
+        self.window.blit(tuple_dialog[2], (
+            self.pos_dialogs[0] + tuple_dialog[0], 
+            self.pos_dialogs[1] + tuple_dialog[1]
         ))
