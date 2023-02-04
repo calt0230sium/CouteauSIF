@@ -36,7 +36,7 @@ class TextManager:
 	def getTexture(self, time:float) -> pygame.Surface:
 		if (self.splitText):
 
-			if time%15 == 0:
+			if time%5 == 0:
 				self.currentWord = self.currentWord + 1
 			
 			tex_id = 0

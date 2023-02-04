@@ -4,11 +4,20 @@ from pygame.locals import *
 from textManager import TextManager
 
 class SceneManagement:
-    def __init__(self, window, dialogs:list[str], background:str):
+    def __init__(
+        self, 
+        window,
+        controls,
+        background:str,
+        dialogs:list[str] = [
+            "Bonjour étrangé. Comment ça va vous allez bien ? Moi non j'ai besoin d'être réparé. Je suis vraiment blessé au plus profond de mon être, apporté moi de l'aide je vous en pris. Je ne suis qu'une pauvre petite box...",
+        ],
+    ):
         self.dialogs = dialogs
         self.window = window
+        self.controls = controls 
         self.current_event = None
-
+        
         # background + dialog
         self.pos_background = [10,10]
         self.pos_dialogs = [10,500]
@@ -16,12 +25,13 @@ class SceneManagement:
             pygame.image.load(background).convert(),
             (800-200,400)
         )
-        self.current_dialog = TextManager("Bonjour étrangé.", True) 
+        self.current_dialog = TextManager(dialogs[0], True)
+        self.isEnd = False
 
         # const
 
     def update(self) -> None:
-        self.eventManager()
+        print(self.controls.space)
         self.current_dialog.initialize()
         self.draw()
 
@@ -41,11 +51,3 @@ class SceneManagement:
             self.pos_dialogs[0], 
             self.pos_dialogs[1]
         ))
-
-    def eventManager(self) -> None:
-        for event in pygame.event.get():
-            match event.type:
-                case pygame.KEYDOWN:
-                    self.current_event = event.key
-                case pygame.MOUSEBUTTONDOWN:
-                    self.current_event = event.button
