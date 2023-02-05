@@ -3,7 +3,7 @@ from pygame.locals import *
 
 from textManager import TextManager
 from scenes.scene_test import Scene_test
-
+from scenes.scenar import Scene_chat
 
 pygame.init()
 pygame.font.init()
@@ -44,6 +44,24 @@ FIN_MINOU = pygame.image.load('../assets/menu/fin_miaou.png')
 GAME_MODE = "CLASSIQUE"
 CAT_NB = 0
 
+INVENTAIRE = pygame.image.load('../assets/inventaires/Inventaire_1.png')
+
+COUTEAUX = [
+	pygame.image.load('../assets/couteau/vide.png'),
+	pygame.image.load('../assets/couteau/couteau.png'),
+	pygame.image.load('../assets/couteau/laser_full.png'),
+	pygame.image.load('../assets/couteau/sifflet.png'),
+	pygame.image.load('../assets/couteau/tournevis.png'),
+	pygame.image.load('../assets/couteau/clef.png'),
+
+	# à part
+	pygame.image.load('../assets/couteau/briquet_off.png'),
+	pygame.image.load('../assets/couteau/briquet_on.png'),
+	pygame.image.load('../assets/couteau/couteau_sang.png'),
+	pygame.image.load('../assets/couteau/tournevis_cassé.png'),
+	pygame.image.load('../assets/couteau/laser_vide.png'),
+	pygame.image.load('../assets/couteau/laser_moitié.png'),
+]
 
 class Controls:
 	def __init__(self):
@@ -145,7 +163,12 @@ class Game:
 			case 4: # title
 				self.title.initialize()
 				self.drawText(self.chapter, 800/2-125, 600/2-20)
+
 			case 5: # other scene
+				self.window.blit(INVENTAIRE, (600, 0))
+
+				self.window.blit(COUTEAUX[self.player.knifeState], (600, 80))
+
 				if self.currentScene is None:
 					self.currentScene = self.root
 

@@ -58,8 +58,8 @@ class Scene_test:
         )
 
     def update(self):
-        self.sceneTransition()
         self.sceneTools.update()
+        self.sceneTransition()
 
     def sceneTransition(self):
         if self.sceneTools.controls.isActionTriggered():
@@ -68,7 +68,7 @@ class Scene_test:
 
             match self.sceneTools.controls.action():
                 case "none":
-                    self.sceneTools.controls.actionTrigger = True
+                    pass
                 case "couteau":
                     self.sceneTools.scene_id_transition = 1
                 case "laser":

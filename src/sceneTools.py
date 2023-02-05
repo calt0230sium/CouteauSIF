@@ -29,7 +29,7 @@ class SceneTools:
         self.pos_dialogs = [10,400]
         self.background = pygame.transform.scale(
             pygame.image.load(background).convert(),
-            (800-200,400)
+            (600,400)
         )
         self.id_dialog = 0
         self.current_dialog = TextManager(self.dialogs[self.id_dialog], self.size_font, True)
@@ -42,8 +42,7 @@ class SceneTools:
 
     def dialogTransition(self) -> None:
         if self.controls.isActionTriggered():
-            self.controls.actionTrigger = False
-
+            
             match self.controls.action():
                 case "none":
                     if self.current_dialog.textEnd and self.id_dialog < (len(self.dialogs)-1):
