@@ -16,22 +16,27 @@ class SceneManagement:
         self.controls = controls
         self.current_event = None
         
+        # const
+        self.size_font = 28
+
         # background + dialog
         self.pos_background = [10,10]
-        self.pos_dialogs = [10,420]
+        self.pos_dialogs = [10,400]
         self.background = pygame.transform.scale(
             pygame.image.load(background).convert(),
             (800-200,400)
         )
-        self.current_dialog = TextManager(dialogs[0], 25, True)
+        self.id_dialog = 0
+        self.current_dialog = TextManager(self.dialogs[self.id_dialog], self.size_font, True)
         self.isEnd = False
 
-        # const
-
     def update(self) -> None:
-        print(self.controls.space)
         self.current_dialog.initialize()
         self.draw()
+
+        if self.controls.space_once and self.current_dialog.textEnd and self.id_dialog < len(self.dialogs)-1:
+            self.id_dialog = self.id_dialog + 1
+            self.current_dialog = TextManager(self.dialogs[self.id_dialog], self.size_font, True)
 
     def draw(self) -> None:
         self.drawBackground()
@@ -40,13 +45,12 @@ class SceneManagement:
     def drawBackground(self):
         self.window.blit(self.background, (
             self.pos_background[0], 
-            self.pos_background[1]
+            self.pos_background[1],
         ))
 
     def drawDialog(self):
         text = self.current_dialog
-        tuple_dialog = text.getTexture(pygame.time.get_ticks())
-        self.window.blit(tuple_dialog[2], (
-            self.pos_dialogs[0] + tuple_dialog[0], 
-            self.pos_dialogs[1] + tuple_dialog[1]
+        self.window.blit(text.getTexture(pygame.time.get_ticks()), (
+            self.pos_dialogs[0], 
+            self.pos_dialogs[1],
         ))

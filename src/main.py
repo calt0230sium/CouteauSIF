@@ -20,6 +20,20 @@ class Controls:
 		self.buttonRight = False
 		self.buttonLeft = False
 		self.space = False
+		self.space_once = False
+		self.valid = True
+
+	def updateSpaceOnceKeyDown(self) -> None:
+		if not self.valid:
+			self.space_once = False
+		if self.space:
+			if self.valid:
+				self.space_once = True
+			self.valid = False
+
+	def updateSpaceOnceKeyUp(self) -> None:
+		self.space_once = False
+		self.valid = True
 
 class Game:
 	def __init__(self):
@@ -63,7 +77,7 @@ class Game:
 			self.eventManager()
 			
 			# draw
-			# self.window.fill(BLACK)
+			self.window.fill(BLACK)
 			self.showScene()
 			
 			#draw next
@@ -73,8 +87,9 @@ class Game:
 			self.time.tick()
 
 	def drawText(self, text:TextManager, posX:float, posY: float) -> None:
-		tuple_title = text.getTexture(pygame.time.get_ticks())
-		self.window.blit(tuple_title[2], (posX, posY))
+		self.window.blit(
+			text.getTexture(pygame.time.get_ticks()), (posX, posY)
+		)
 
 	def eventManager(self) -> None:
 		for event in pygame.event.get():
@@ -92,6 +107,7 @@ class Game:
 				case pygame.KEYUP:
 					if event.key == pygame.K_SPACE:
 						self.controls.space = False
+						self.controls.updateSpaceOnceKeyUp()
 
 				case pygame.MOUSEBUTTONDOWN:
 					if event.button == pygame.BUTTON_RIGHT:
@@ -104,6 +120,9 @@ class Game:
 						self.controls.buttonRight = False
 					if event.button == pygame.BUTTON_LEFT:
 						self.controls.buttonLeft = False
+
+
+		self.controls.updateSpaceOnceKeyDown()
 
 CouteauSIF = Game()
 CouteauSIF.gameLoop()
