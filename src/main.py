@@ -123,7 +123,7 @@ class Game:
 		# title screen
 		self.title = TextManager("Le Couteau Sif", 50, False)
 		# root scene
-		self.root = Scene_test(self.window, self.player)
+		self.root = Scene_chat(self.window, self.player)
 
 		self.title = TextManager("Le Couteau Sif", 60, False)
 		self.chapter = TextManager("Chapitre 1", 60, False)
