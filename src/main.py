@@ -4,6 +4,7 @@ from pygame.locals import *
 from textManager import TextManager
 from scenes.scene_test import Scene_test
 
+
 pygame.init()
 pygame.font.init()
 
@@ -35,6 +36,7 @@ class Controls:
 		self.space_once = False
 		self.valid = True
 
+
 class Game:
 	def __init__(self):
 		self.window = pygame.display.set_mode((800, 600))
@@ -64,10 +66,14 @@ class Game:
 			case 0: # title
 				self.title.initialize()
 				self.drawText(self.title, 800/2-125, 600/2-10)
-			case _: # other scene
+				print("test")
+			case 1: # other scene
 				if self.currentScene is not self.bobine[self.current_scene_id-1]:
 					self.currentScene = self.bobine[self.current_scene_id-1]
-
+				if self.current_scene_id != self.current_scene_id + self.currentScene.sceneTools.sceneTransition()[0]:
+					print("heuuu")
+					print(self.currentScene.sceneTools.sceneTransition()[0])
+					self.currentScene = self.currentScene.sceneTools.sceneTransition()[1]
 				self.currentScene.update()
 
 	def gameLoop(self) -> None:
@@ -115,12 +121,11 @@ class Game:
 					if event.button == pygame.BUTTON_LEFT:
 						self.controls.buttonLeft = True
 
-				case pygame.MOUSEBUTTONDOWN:
+				case pygame.MOUSEBUTTONUP:
 					if event.button == pygame.BUTTON_RIGHT:
 						self.controls.buttonRight = False
 					if event.button == pygame.BUTTON_LEFT:
 						self.controls.buttonLeft = False
-
 
 		self.controls.updateSpaceOnceKeyDown()
 

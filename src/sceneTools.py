@@ -3,17 +3,21 @@ from pygame.locals import *
 
 from textManager import TextManager
 
-class SceneManagement:
+
+class SceneTools:
     def __init__(
         self, 
         window,
         controls,
         background:str,
         dialogs:list[str],
+        nodes_scenes:None,
     ):
         self.dialogs = dialogs
         self.window = window
         self.controls = controls
+        self.scene_id_transition = 0
+        self.nodes_scenes = nodes_scenes
         self.current_event = None
         
         # const
@@ -54,3 +58,6 @@ class SceneManagement:
             self.pos_dialogs[0], 
             self.pos_dialogs[1],
         ))
+
+    def sceneTransition(self):
+        return (self.scene_id_transition, self.nodes_scenes[self.scene_id_transition-1])
