@@ -11,6 +11,7 @@ class SceneTools:
         controls,
         background:str,
         dialogs:list[str],
+
         nodes_scenes:None,
     ):
         self.dialogs = dialogs
@@ -35,13 +36,21 @@ class SceneTools:
         self.isEnd = False
 
     def update(self) -> None:
+        self.dialogTransition()
         self.current_dialog.initialize()
         self.draw()
 
-        if self.controls.space_once and self.current_dialog.textEnd and self.id_dialog < len(self.dialogs)-1:
-            self.id_dialog = self.id_dialog + 1
-            self.current_dialog = TextManager(self.dialogs[self.id_dialog], self.size_font, True)
+    def dialogTransition(self) -> None:
+        if self.controls.isActionTriggered():
+            self.controls.actionTrigger = False
 
+            match self.controls.action():
+                case "none":
+                    if self.current_dialog.textEnd and self.id_dialog < (len(self.dialogs)-1):
+                        self.id_dialog = self.id_dialog + 1
+                        self.current_dialog = TextManager(self.dialogs[self.id_dialog], self.size_font, True)
+
+            
     def draw(self) -> None:
         self.drawBackground()
         self.drawDialog()
@@ -60,4 +69,7 @@ class SceneTools:
         ))
 
     def sceneTransition(self):
-        return (self.scene_id_transition, self.nodes_scenes[self.scene_id_transition-1])
+        if self.scene_id_transition != 0:
+            return self.nodes_scenes[self.scene_id_transition-1]
+        else:
+            return None

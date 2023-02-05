@@ -58,11 +58,26 @@ class Scene_test:
         )
 
     def update(self):
+        self.sceneTransition()
         self.sceneTools.update()
-        self.eventManagement()
 
-    def eventManagement(self):
-        if self.sceneTools.controls.buttonRight:
-            self.sceneTools.scene_id_transition = 1 # on change de scène vers la scène 1 avec clique droit
-        if self.sceneTools.controls.buttonLeft:
-            self.sceneTools.scene_id_transition = 2 # on change de scène vers la scène 2 avec clique droit
+    def sceneTransition(self):
+        if self.sceneTools.controls.isActionTriggered():
+            self.sceneTools.controls.actionTrigger = False
+            print("bonjour")
+
+            match self.sceneTools.controls.action():
+                case "none":
+                    self.sceneTools.controls.actionTrigger = True
+                case "couteau":
+                    self.sceneTools.scene_id_transition = 1
+                case "laser":
+                    self.sceneTools.scene_id_transition = 2
+                case "briquet":
+                    self.sceneTools.scene_id_transition = 2
+                case "sifflet":
+                    self.sceneTools.scene_id_transition = 1
+                case "tournevis":
+                     self.sceneTools.scene_id_transition = 2
+                case "clé":
+                     self.sceneTools.scene_id_transition = 1
